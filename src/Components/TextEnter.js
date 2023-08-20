@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from 'react';
 
-export  default function Textwork()
+export  default function Textwork(props)
 {
    const [text,setText]=useState("Hi");
    const [charcter,setCharacter]=useState(0);
@@ -25,12 +25,12 @@ export  default function Textwork()
     }
     return(<>
         <div className="container-fluid">
-             <label htmlFor='label' className='my-2'>Enter your text here.</label>
+             <label htmlFor='label' className={`my-2 text-${props.mode==='light'?'black':'white'}`}>Enter your text here.</label>
              <textarea className="form-control" placeholder="Leave a comment here" value={text} onChange={handleOnChange} id="floatingTextarea2" rows="4"></textarea>
              <button className='btn btn-success my-2' onClick={toUpperCase} >ConvertToUpperCase</button>
              <button className="btn btn-success  mx-2 my-2" onClick={toLowerCase}>ConvertToLowerCase</button>
          </div>
-         <div className="container-fluid">
+         <div className={`container-fluid text-${props.mode==='light'?'black':'white'}`}>
         {charcter} charcter and {words} words.
          </div>
          </>
